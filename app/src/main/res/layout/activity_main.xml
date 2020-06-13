@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.android.plotsensor.MainActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay"/>
+
+    <TextView
+        android:id="@+id/xValue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30sp"/>
+
+    <TextView
+        android:id="@+id/yValue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/xValue"
+        android:layout_marginTop="30sp" />
+
+    <TextView
+        android:id="@+id/zValue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/yValue"
+        android:layout_marginTop="30sp" />
+
+    <com.jjoe64.graphview.GraphView
+        android:id="@+id/XlineGraph"
+        android:layout_width="match_parent"
+        android:layout_height="150dip"
+        android:layout_marginTop="10sp"
+        android:layout_below="@+id/zValue"
+        />
+    <com.jjoe64.graphview.GraphView
+        android:id="@+id/YlineGraph"
+        android:layout_width="match_parent"
+        android:layout_height="150dip"
+        android:layout_marginTop="10sp"
+        android:layout_below="@+id/XlineGraph"
+        />
+    <com.jjoe64.graphview.GraphView
+        android:id="@+id/ZlineGraph"
+        android:layout_width="match_parent"
+        android:layout_height="150dip"
+        android:layout_marginTop="10sp"
+        android:layout_below="@+id/YlineGraph"
+        />
+</RelativeLayout>
