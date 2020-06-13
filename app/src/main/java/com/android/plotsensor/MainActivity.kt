@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
     var zSeries : LineGraphSeries<DataPoint>? =
         null
 
-    var count = 0.0;
+    var count = 0.0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,9 +69,9 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
 
                 )
             )
-        xSeries!!.setColor(Color.GREEN);
-        ySeries!!.setColor(Color.RED);
-        zSeries!!.setColor(Color.BLUE);
+        xSeries!!.setColor(Color.GREEN)
+        ySeries!!.setColor(Color.RED)
+        zSeries!!.setColor(Color.BLUE)
         XlineChart!!.addSeries(xSeries)
         YlineChart!!.addSeries(ySeries)
         ZlineChart!!.addSeries(zSeries)
@@ -94,12 +94,15 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
     }
 
     override fun onSensorChanged(event: SensorEvent?) {
-        Log.d(this.localClassName, "X: "+ event!!.values[0] + "Y:"+event!!.values[1] + "Z:" + event!!.values[2])
-        xValue!!.setText("X Value: "+event!!.values[0])
-        yValue!!.setText("Y Value: "+event!!.values[1])
-        zValue!!.setText("Z Value: "+event!!.values[2])
-        xSeries!!.appendData(DataPoint(count++ as Double, event!!.values[0].toDouble() ), false, 10)
-        ySeries!!.appendData(DataPoint(count++ as Double, event!!.values[1].toDouble() ), false, 10)
-        zSeries!!.appendData(DataPoint(count++ as Double, event!!.values[2].toDouble() ), false, 10)
+        if (event != null) {
+            Log.d(this.localClassName, "X: "+ event.values[0] + "Y:"+event.values[1] + "Z:" + event.values[2])
+            xValue!!.setText("X Value: "+event.values[0])
+            yValue!!.setText("Y Value: "+event.values[1])
+            zValue!!.setText("Z Value: "+event.values[2])
+            count += 0.000001
+            xSeries!!.appendData(DataPoint(count as Double, event.values[0].toDouble() ), false, 10)
+            ySeries!!.appendData(DataPoint(count as Double, event.values[1].toDouble() ), false, 10)
+            zSeries!!.appendData(DataPoint(count as Double, event.values[2].toDouble() ), false, 10)
+        }
     }
 }
